@@ -29,20 +29,20 @@ const Reviews = () => {
   ];
 
   return (
-      <div className="p-5 md:mx-30 bg-secondary rounded">
-        <div className="text-center text-white">
-          <h1 className="text-2xl md:text-4xl font-semibold mt-5">
-            What Our <span className="text-primary">Clients</span> Say
-          </h1>
-          <p>Explore our wide range of innovative anti-aging solutions.</p>
-        </div>
-
-  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mx-5">
-          {testimonials.map((review) => (
-            <Review review={review}></Review>
-          ))}
-        </div> 
+    <div className="p-5 md:mx-30 bg-secondary rounded">
+      <div className="text-center text-white">
+        <h1 className="text-2xl md:text-4xl font-semibold mt-5">
+          What Our <span className="text-primary">Clients</span> Say
+        </h1>
+        <p>Explore our wide range of innovative anti-aging solutions.</p>
       </div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mx-5">
+        {testimonials.map((review) => (
+          <Review review={review}></Review>
+        ))}
+      </div>
+    </div>
   );
 };
 

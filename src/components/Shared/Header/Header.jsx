@@ -9,7 +9,7 @@ const Header = () => {
   const menuItems = (
     <>
       <li>
-        <a>Home</a>
+        <Link to="/home">Home</Link>
       </li>
       <li>
         <a>About</a>
@@ -19,7 +19,7 @@ const Header = () => {
         <a>Service</a>
       </li>
       <li>
-        <a>Contact</a>
+        <Link to="/contact">Contact</Link>
       </li>
     </>
   );

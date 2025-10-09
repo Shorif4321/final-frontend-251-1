@@ -27,7 +27,7 @@ const SpecialTreatment = () => {
   ];
 
   return (
-    <div className="p-5 md:p-30">
+    <div className="p-5 md:p-30 md:pt-0">
       <div className="text-center">
         <h1 className="text-2xl md:text-4xl font-semibold">
           Our Specialized <span className="text-primary">Treatments</span>
