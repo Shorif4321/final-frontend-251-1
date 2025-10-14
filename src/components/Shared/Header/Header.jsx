@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../../../assets/images/logo.png";
 import man from "../../../assets/icons/man.png";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/UserContext";
 
 const Header = () => {
-  const [user, setUser] = useState(false);
+  const { user ,logOut} = useContext(AuthContext);
+  console.log(user);
 
   const menuItems = (
     <>
       <li>
-        <Link to="/home">Home</Link>
+        <Link to="/home">Home </Link>
       </li>
       <li>
-        <a>About</a>
+        <Link to="/about">About</Link>
       </li>
 
       <li>
@@ -51,47 +53,46 @@ const Header = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {menuItems}
-             {user ? (
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  />
+              {user ? (
+                <div className="dropdown dropdown-end">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img
+                        alt="Tailwind CSS Navbar component"
+                        src={user?.photoURL}
+                      />
+                    </div>
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                  >
+                    <li>
+                      <a className="justify-between">{user?.displayName}</a>
+                    </li>
+                    <li>
+                      <a>{user?.email}</a>
+                    </li>
+                    <li>
+                      <a onClick={logOut}>Logout</a>
+                    </li>
+                  </ul>
                 </div>
-              </div>
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-              >
-                <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </a>
-                </li>
-                <li>
-                  <a>Settings</a>
-                </li>
-                <li>
-                  <a>Logout</a>
-                </li>
-              </ul>
-            </div>
-          ) : (
-            <div className="w-10 p-2 px-3 border-2 border-gray-300 rounded-full p-0">
-              <img src={man} alt="man" />
-            </div>
-          )}
+              ) : (
+                <Link to="/sign-in">
+                  <div className="w-10 p-2 px-3 border-2 border-gray-300 rounded-full p-0">
+                    <img src={man} alt="man" />
+                  </div>
+                </Link>
+              )}
             </ul>
           </div>
-          <Link to="/" className="  text-xl">
-            <img src={logo} alt="medisite" />
+          <Link to="/" className="text-xl">
+            <img src={logo} alt="medi site" />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex ">
@@ -109,7 +110,7 @@ const Header = () => {
                 <div className="w-10 rounded-full">
                   <img
                     alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    src={user?.photoURL}
                   />
                 </div>
               </div>
@@ -118,23 +119,22 @@ const Header = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </a>
+                  <a className="justify-between">{user?.displayName}</a>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <a>{user?.email}</a>
                 </li>
                 <li>
-                  <a>Logout</a>
+                    <a onClick={logOut}>Logout</a>
                 </li>
               </ul>
             </div>
           ) : (
-            <div className="p-2 px-3 border-2 border-gray-300 rounded-full p-0">
-              <img src={man} alt="man" />
-            </div>
+            <Link to="/sign-in">
+              <div className="w-10 p-2 px-3 border-2 border-gray-300 rounded-full p-0">
+                <img src={man} alt="man" />
+              </div>
+            </Link>
           )}
         </div>
       </div>

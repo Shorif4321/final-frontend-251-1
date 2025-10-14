@@ -5,7 +5,7 @@ import email from "../../../assets/icons/email.png";
 
 const Contact = ({title,title2}) => {
   return (
-    <div className="bg-base-300 p-5 md:p-30 md:pt-10 md:my-20">
+    <div className="bg-base-300 p-5 md:p-30 md:pt-10 ">
       <div className="text-center">
         <h1 className="text-2xl md:text-4xl font-semibold">
          {title} <span className="text-primary">{title2}</span>

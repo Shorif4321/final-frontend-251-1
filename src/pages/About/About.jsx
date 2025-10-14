@@ -1,9 +1,12 @@
 import React from 'react';
+import Reviews from '../Home/Reviews/Reviews';
+import SpecialTreatment from '../Home/SpecialTreatment/SpecialTreatment';
 
 const About = () => {
     return (
         <div>
-            <h1>about</h1>
+            <SpecialTreatment/>
+            <Reviews></Reviews>
         </div>
     );
 };
