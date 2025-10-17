@@ -20,7 +20,7 @@ const SignUp = () => {
     googleAuthentication()
       .then((result) => {
         const user = result.user;
-         savedUser(user.displayName, user.email);
+        savedUser(user.displayName, user.email);
       })
       .catch((error) => {
         const message = error.message;
