@@ -5,6 +5,11 @@ import About from "../../pages/About/About";
 import ContactUs from "../../pages/ContactUs/ContactUs";
 import SignIn from "../../pages/SignIn/SignIn";
 import SignUp from "../../pages/SignUp/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Dashboard from "../../pages/Dashboard/Dashboard";
+import DashboardLayout from "../../layout/DashboardLayout/DashboardLayout";
+import AllUsers from "../../pages/Dashboard/AllUsers/AllUsers";
+import AddServices from "../../pages/Dashboard/AddServices/AddServices";
 
 const router = createBrowserRouter([
     {
@@ -33,8 +38,27 @@ const router = createBrowserRouter([
             },
             {
                 path:'/contact',
-                element:<ContactUs></ContactUs>
-            }
+                element:<PrivateRoute><ContactUs></ContactUs></PrivateRoute>
+            },
+        ],
+
+    },
+    {
+        path:'/dashboard',
+        element:<DashboardLayout></DashboardLayout>,
+        children:[
+            {
+                path:'/dashboard',
+                element:<Dashboard></Dashboard>
+            },
+            {
+                path:'/dashboard/all-users',
+                element:<PrivateRoute><AllUsers/></PrivateRoute>
+            },
+            {
+                path:'/dashboard/add-service',
+                element:<PrivateRoute><AddServices/></PrivateRoute>
+            },
         ]
     }
 ])

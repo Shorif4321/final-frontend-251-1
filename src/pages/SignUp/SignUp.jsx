@@ -20,6 +20,7 @@ const SignUp = () => {
     googleAuthentication()
       .then((result) => {
         const user = result.user;
+         savedUser(user.displayName, user.email);
       })
       .catch((error) => {
         const message = error.message;
@@ -31,10 +32,32 @@ const SignUp = () => {
     githubAuthentication()
       .then((result) => {
         const user = result.user;
+        savedUser(user.displayName, user.email);
       })
       .catch((error) => {
         const message = error.message;
         console.log(message);
+      });
+  };
+
+  const savedUser = (name, email) => {
+    const singleUser = {
+      name,
+      email,
+    };
+
+    fetch("API will chare here /users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(singleUser),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          alert("User create success");
+        }
       });
   };
 
