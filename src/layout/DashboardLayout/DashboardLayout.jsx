@@ -1,17 +1,16 @@
 import React from "react";
 import Header from "../../components/Shared/Header/Header";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 const DashboardLayout = () => {
   return (
     <div>
-        <Header></Header>
+      <Header></Header>
       <div className="drawer lg:drawer-open">
         <input id="my-dashboard" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content md:p-10">
           {/* Page content here */}
           <Outlet></Outlet>
-          
         </div>
         <div className="drawer-side">
           <label
@@ -22,11 +21,34 @@ const DashboardLayout = () => {
           <ul className="menu bg-base-200 min-h-full w-80 p-4">
             {/* Sidebar content here */}
             <li>
-              <Link to="/dashboard/all-users">All Users</Link>
+              <NavLink
+                to="/dashboard/all-users"
+                className={({ isActive }) =>
+                  `px-2 py-1 transition-colors ${
+                    isActive
+                      ? "border-b-2 border-primary text-primary"
+                      : "text-gray-600"
+                  }`
+                }
+              >
+                All Users
+              </NavLink>
             </li>
-            <li>
-              <Link to='/dashboard/add-service'>Add Service</Link>
+            <li className="mt-2">
+              <NavLink
+               to="/dashboard/add-service"
+                className={({ isActive }) =>
+                  `px-2 py-1 transition-colors ${
+                    isActive
+                      ? "border-b-2 border-primary text-primary"
+                      : "text-gray-600"
+                  }`
+                }
+              >
+                Add Service
+              </NavLink>
             </li>
+           
           </ul>
         </div>
       </div>

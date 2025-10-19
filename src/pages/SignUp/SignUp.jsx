@@ -45,8 +45,10 @@ const SignUp = () => {
       name,
       email,
     };
+    console.log(singleUser);
+    
 
-    fetch("API will chare here /users", {
+    fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
