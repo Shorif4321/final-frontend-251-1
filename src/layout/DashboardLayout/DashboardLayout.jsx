@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../components/Shared/Header/Header";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 const DashboardLayout = () => {
   return (
@@ -20,6 +20,20 @@ const DashboardLayout = () => {
           ></label>
           <ul className="menu bg-base-200 min-h-full w-80 p-4">
             {/* Sidebar content here */}
+            <li>
+              <NavLink
+                to="/dashboard/my-bookings"
+                className={({ isActive }) =>
+                  `px-2 py-1 transition-colors ${
+                    isActive
+                      ? "border-b-2 border-primary text-primary"
+                      : "text-gray-600"
+                  }`
+                }
+              >
+                My Bookings
+              </NavLink>
+            </li>
             <li>
               <NavLink
                 to="/dashboard/all-users"
@@ -46,6 +60,20 @@ const DashboardLayout = () => {
                 }
               >
                 Add Service
+              </NavLink>
+            </li>
+            <li className="mt-2">
+              <NavLink
+               to="/dashboard/manage-service"
+                className={({ isActive }) =>
+                  `px-2 py-1 transition-colors ${
+                    isActive
+                      ? "border-b-2 border-primary text-primary"
+                      : "text-gray-600"
+                  }`
+                }
+              >
+                Manage Service
               </NavLink>
             </li>
            

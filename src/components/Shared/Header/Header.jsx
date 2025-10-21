@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/UserContext";
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, deleteTheUser } = useContext(AuthContext);
   // console.log(user);
 
   const menuItems = (
@@ -79,6 +79,9 @@ const Header = () => {
                       <a>{user?.email}</a>
                     </li>
                     <li>
+                      <a onClick={deleteTheUser}> Delete Account</a>
+                    </li>
+                    <li>
                       <a onClick={logOut}>Logout</a>
                     </li>
                   </ul>
@@ -125,6 +128,9 @@ const Header = () => {
                 </li>
                 <li>
                   <a>{user?.email}</a>
+                </li>
+                <li>
+                  <a onClick={deleteTheUser}> Delete Account</a>
                 </li>
 
                 {user && (

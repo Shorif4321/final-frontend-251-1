@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
+  deleteUser,
   getAuth,
   GithubAuthProvider,
   GoogleAuthProvider,
@@ -41,16 +42,21 @@ const UserContext = ({ children }) => {
 
   const logOut = () => {
     signOut(auth)
-      .then(() => {
-      })
-      .catch((error) => {
-      });
+      .then(() => {})
+      .catch((error) => {});
+  };
+
+  // delete user
+  const deleteTheUser = () => {
+   return deleteUser(auth.currentUser)
+     
   };
 
   const userInfo = {
     googleAuthentication,
     githubAuthentication,
     logOut,
+    deleteTheUser,
     user,
   };
 
