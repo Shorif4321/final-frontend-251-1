@@ -37,7 +37,7 @@ const SpecialTreatment = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {treatments.map((treatment) => (
-          <Treatment treatment={treatment}></Treatment>
+          <Treatment treatment={treatment} key={treatment._id}></Treatment>
         ))}
       </div>
     </div>

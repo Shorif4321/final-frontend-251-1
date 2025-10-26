@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "../../components/Shared/Header/Header";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
+import { AuthContext } from "../../context/UserContext";
 
 const DashboardLayout = () => {
+  const { user } = useContext(AuthContext);
+  const [isAdmin] = useAdmin(user?.email);
   return (
     <div>
       <Header></Header>
@@ -34,49 +38,52 @@ const DashboardLayout = () => {
                 My Bookings
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/dashboard/all-users"
-                className={({ isActive }) =>
-                  `px-2 py-1 transition-colors ${
-                    isActive
-                      ? "border-b-2 border-primary text-primary"
-                      : "text-gray-600"
-                  }`
-                }
-              >
-                All Users
-              </NavLink>
-            </li>
-            <li className="mt-2">
-              <NavLink
-               to="/dashboard/add-service"
-                className={({ isActive }) =>
-                  `px-2 py-1 transition-colors ${
-                    isActive
-                      ? "border-b-2 border-primary text-primary"
-                      : "text-gray-600"
-                  }`
-                }
-              >
-                Add Service
-              </NavLink>
-            </li>
-            <li className="mt-2">
-              <NavLink
-               to="/dashboard/manage-service"
-                className={({ isActive }) =>
-                  `px-2 py-1 transition-colors ${
-                    isActive
-                      ? "border-b-2 border-primary text-primary"
-                      : "text-gray-600"
-                  }`
-                }
-              >
-                Manage Service
-              </NavLink>
-            </li>
-           
+            {isAdmin && (
+              <>
+                <li className="mt-2">
+                  <NavLink
+                    to="/dashboard/all-users"
+                    className={({ isActive }) =>
+                      `px-2 py-1 transition-colors ${
+                        isActive
+                          ? "border-b-2 border-primary text-primary"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    All Users
+                  </NavLink>
+                </li>
+                <li className="mt-2">
+                  <NavLink
+                    to="/dashboard/add-service"
+                    className={({ isActive }) =>
+                      `px-2 py-1 transition-colors ${
+                        isActive
+                          ? "border-b-2 border-primary text-primary"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    Add Service
+                  </NavLink>
+                </li>
+                <li className="mt-2">
+                  <NavLink
+                    to="/dashboard/manage-service"
+                    className={({ isActive }) =>
+                      `px-2 py-1 transition-colors ${
+                        isActive
+                          ? "border-b-2 border-primary text-primary"
+                          : "text-gray-600"
+                      }`
+                    }
+                  >
+                    Manage Service
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

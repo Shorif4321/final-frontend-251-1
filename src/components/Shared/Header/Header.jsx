@@ -18,7 +18,7 @@ const Header = () => {
       </li>
 
       <li>
-        <a>Service</a>
+        <Link to="/services">Services</Link>
       </li>
       <li>
         <Link to="/contact">Contact</Link>
