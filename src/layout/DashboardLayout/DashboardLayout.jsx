@@ -70,7 +70,7 @@ const DashboardLayout = () => {
                 </li>
                 <li className="mt-2">
                   <NavLink
-                    to="/dashboard/manage-service"
+                    to="/dashboard/manage-specialist"
                     className={({ isActive }) =>
                       `px-2 py-1 transition-colors ${
                         isActive

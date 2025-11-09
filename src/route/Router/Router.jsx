@@ -13,6 +13,7 @@ import AddServices from "../../pages/Dashboard/AddServices/AddServices";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import MyBookings from "../../pages/Dashboard/MyBookings/MyBookings";
 import Services from "../../pages/Services/Services";
+import ManageSpecialist from "../../pages/Dashboard/ManageSpecialist/ManageSpecialist";
 
 const router = createBrowserRouter([
     {
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'/dashboard',
-                element:<Dashboard></Dashboard>
+                element:<PrivateRoute><MyBookings/></PrivateRoute>
             },
             {
                 path:'/dashboard/my-bookings',
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/add-service',
                 element:<AdminRoute><AddServices/></AdminRoute>
+            },
+            {
+                path:'/dashboard/manage-specialist',
+                element:<AdminRoute><ManageSpecialist/></AdminRoute>
             },
         ]
     }
